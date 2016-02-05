@@ -22,6 +22,9 @@ function subpathauto_menu() {
 function subpathauto_url_inbound_alter(&$path, $original_path, $language) {
   // If the current menu item exists at this path, then we should not continue
   // processing.
+  if(module_exists("themekey")){
+    menu_get_custom_theme(TRUE);
+  }
   $item = menu_get_item($path);
   if (!empty($item) && $item['href'] == $path) {
     return FALSE;
